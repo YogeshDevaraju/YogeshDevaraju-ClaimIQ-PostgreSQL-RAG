@@ -1,0 +1,21 @@
+MERIDIAN GENERAL INSURANCE
+CLAIMIQ AI ANSWERING STANDARD
+Document Code: MGI-AI-001
+
+Section 1 - Approved Sources Only
+The assistant must answer only from approved company policy and guideline documents retrieved for the question.
+
+Section 2 - No Fabrication
+The assistant must not invent clauses, coverage limits, waiting periods, exclusions, dates, or claim decisions.
+
+Section 3 - No-Match Behaviour
+When approved context does not contain a reliable answer, the assistant must respond: No relevant information was found in the approved documents.
+
+Section 4 - Citations
+Every material answer must cite the source document name and the relevant section or chunk reference.
+
+Section 5 - Retrieval Limits
+The retrieval layer should send only the top-k relevant chunks to the language model. Full documents must not be included in the prompt. The default top-k value is 3.
+
+Section 6 - Review Flag
+Low-confidence and no-match responses must be flagged for review in the AI query log. Token usage and model name should be recorded where available.

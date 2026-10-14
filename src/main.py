@@ -1,15 +1,63 @@
+﻿from src.api.routes.rag_chat import router as rag_chat_router
 from fastapi import FastAPI
-from src.api.routes.health import router as health_router
-from src.api.routes.users import router as users_router
-from src.api.routes.policies import router as policy_router
 
-app = FastAPI(title="ClaimIQ", version="1.0.0")
+from src.api.routes import (
+    ai,
+    analytics,
+    audit_logs,
+    claims,
+    documents,
+    health,
+    policies,
+    users,
+)
 
-app.include_router(health_router)
-app.include_router(users_router)
-app.include_router(policy_router)
+
+app = FastAPI(
+    title="ClaimIQ",
+    version="1.0.0",
+)
 
 
-@app.get("/")
-def root():
-    return {"message": "ClaimIQ API"}
+app.include_router(
+    health.router,
+    prefix="/api/v1",
+)
+
+app.include_router(
+    users.router,
+    prefix="/api/v1",
+)
+
+app.include_router(
+    policies.router,
+    prefix="/api/v1",
+)
+
+app.include_router(
+    claims.router,
+    prefix="/api/v1",
+)
+
+app.include_router(
+    documents.router,
+    prefix="/api/v1",
+)
+
+app.include_router(
+    ai.router,
+    prefix="/api/v1",
+)
+
+app.include_router(
+    analytics.router,
+    prefix="/api/v1",
+)
+
+app.include_router(
+    audit_logs.router,
+    prefix="/api/v1",
+)
+
+app.include_router(rag_chat_router)
+

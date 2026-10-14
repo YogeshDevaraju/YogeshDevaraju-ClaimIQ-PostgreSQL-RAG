@@ -1,0 +1,18 @@
+MERIDIAN GENERAL INSURANCE
+POLICY DOCUMENT GOVERNANCE STANDARD
+Document Code: MGI-DOC-001
+
+Section 1 - Approval
+Only documents approved by an Admin may be used as sources by the ClaimIQ assistant. Draft, expired, inactive, or deleted documents must not be retrieved.
+
+Section 2 - Upload Metadata
+Each uploaded document must record its name, source type, uploader, upload timestamp, active status, and version where available.
+
+Section 3 - Processing
+Approved documents are extracted into text and divided into overlapping chunks. Each chunk must retain a reference to the source document and a section or chunk number.
+
+Section 4 - Deactivation
+When a document is deactivated, future AI answers must not use its chunks. Existing query logs remain unchanged for audit purposes.
+
+Section 5 - Data Protection
+Passwords, access tokens, full identity numbers, and unnecessary personal information must not be stored in document metadata, prompts, or logs.

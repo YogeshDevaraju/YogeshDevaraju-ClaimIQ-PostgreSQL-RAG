@@ -1,0 +1,22 @@
+MERIDIAN GENERAL INSURANCE
+INTERNAL CLAIMS PROCESSING GUIDELINE
+Document Code: MGI-CLAIMS-GDL-001
+Approved for Internal Use
+
+Section 1 - Workflow
+Every claim must follow: Submitted, Under Review, Approved or Rejected, and Closed. A claim cannot move directly from Submitted to Closed. A manager override requires written justification.
+
+Section 2 - Validation
+Before acceptance, confirm that required fields are present, the policy exists, the policy is active on the incident date, the claim type matches the policy type, and the claimed amount is positive.
+
+Section 3 - Assignment
+Claims should be assigned to an active Claims Adjuster. Adjusters may process claims assigned to them. Managers may reassign work when workload or regional coverage requires it.
+
+Section 4 - Decision Notes
+Approval or rejection must include a concise note describing the policy clause, evidence considered, and decision rationale. Sensitive identity numbers must not be written into notes or logs.
+
+Section 5 - High-Value Review
+Claims above INR 500,000 require Claims Manager review before approval.
+
+Section 6 - Closure
+A claim may be closed only after the approval or rejection decision, required communication, and supporting notes have been recorded.

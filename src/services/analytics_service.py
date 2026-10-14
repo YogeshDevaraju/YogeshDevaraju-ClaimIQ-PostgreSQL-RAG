@@ -36,12 +36,26 @@ def get_claim_analytics(
             "adjuster_workload": {},
         }
 
-    frame = pd.DataFrame(
-        [
+    records = []
+
+    for claim in claims:
+        claim_status = (
+            claim.status.value
+            if hasattr(claim.status, "value")
+            else str(claim.status)
+        )
+
+        current_claim_type = (
+            claim.claim_type.value
+            if hasattr(claim.claim_type, "value")
+            else str(claim.claim_type)
+        )
+
+        records.append(
             {
-                "status": claim.status.value,
+                "status": claim_status,
                 "region": claim.region,
-                "claim_type": claim.claim_type.value,
+                "claim_type": current_claim_type,
                 "amount": float(claim.amount),
                 "assigned_adjuster_id": (
                     claim.assigned_adjuster_id
@@ -49,17 +63,16 @@ def get_claim_analytics(
                 "submitted_at": claim.submitted_at,
                 "closed_at": claim.closed_at,
             }
-            for claim in claims
-        ]
-    )
+        )
 
+    frame = pd.DataFrame(records)
     frame = frame.drop_duplicates()
 
     total_claims = len(frame)
 
     approval_rate = round(
         (
-            frame["status"].eq("APPROVED").sum()
+            frame["status"].eq("approved").sum()
             / total_claims
         )
         * 100,
@@ -68,7 +81,7 @@ def get_claim_analytics(
 
     rejection_rate = round(
         (
-            frame["status"].eq("REJECTED").sum()
+            frame["status"].eq("rejected").sum()
             / total_claims
         )
         * 100,
@@ -83,9 +96,13 @@ def get_claim_analytics(
         average_turnaround_days = 0
     else:
         completed["turnaround"] = (
-            pd.to_datetime(completed["closed_at"])
+            pd.to_datetime(
+                completed["closed_at"],
+                utc=True,
+            )
             - pd.to_datetime(
-                completed["submitted_at"]
+                completed["submitted_at"],
+                utc=True,
             )
         )
 
@@ -106,19 +123,34 @@ def get_claim_analytics(
         utc=True,
     )
 
-    open_claims = frame["closed_at"].isna()
-
-    age_hours = (
+    claim_age_hours = (
         current_time - submitted_at
     ).dt.total_seconds() / 3600
 
+    open_claims = frame["closed_at"].isna()
+
     sla_breaches = int(
-        ((age_hours > 72) & open_claims).sum()
+        (
+            (claim_age_hours > 72)
+            & open_claims
+        ).sum()
     )
 
-    workload = (
+    claims_by_region = (
+        frame["region"]
+        .value_counts()
+        .to_dict()
+    )
+
+    claims_by_type = (
+        frame["claim_type"]
+        .value_counts()
+        .to_dict()
+    )
+
+    adjuster_workload = (
         frame["assigned_adjuster_id"]
-        .fillna("UNASSIGNED")
+        .fillna("unassigned")
         .astype(str)
         .value_counts()
         .to_dict()
@@ -132,15 +164,7 @@ def get_claim_analytics(
             average_turnaround_days
         ),
         "sla_breaches": sla_breaches,
-        "claims_by_region": (
-            frame["region"]
-            .value_counts()
-            .to_dict()
-        ),
-        "claims_by_type": (
-            frame["claim_type"]
-            .value_counts()
-            .to_dict()
-        ),
-        "adjuster_workload": workload,
+        "claims_by_region": claims_by_region,
+        "claims_by_type": claims_by_type,
+        "adjuster_workload": adjuster_workload,
     }

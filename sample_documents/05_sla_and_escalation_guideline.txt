@@ -1,0 +1,21 @@
+MERIDIAN GENERAL INSURANCE
+CLAIMS SLA AND ESCALATION GUIDELINE
+Document Code: MGI-SLA-001
+
+Section 1 - Acknowledgement
+A submitted claim should be acknowledged within 4 business hours.
+
+Section 2 - Initial Review
+Initial document and policy validation should be completed within 24 hours of submission.
+
+Section 3 - Standard Decision Target
+A standard claim should receive an approval or rejection decision within 72 hours after all required documents are received.
+
+Section 4 - SLA Breach
+An open claim pending for more than 72 hours is flagged as an SLA breach unless it is waiting for documents and the reason is recorded.
+
+Section 5 - Escalation
+Claims approaching 60 hours without a decision should be escalated to the Claims Manager. High-value claims and repeated documentation delays should be prioritized.
+
+Section 6 - Reporting
+SLA reporting must show total open claims, breached claims, region, claim type, assigned adjuster, and claim age.

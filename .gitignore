@@ -1,49 +1,17 @@
-# Python
-__pycache__/
-*.py[cod]
-*$py.class
-
-# Virtual Environment
+﻿.env
 .venv/
-venv/
-env/
-
-# Environment Variables
-.env
-
-# IDE
-.idea/
-.vscode/
-
-# PyCharm
-*.iml
-
-# OS Files
-.DS_Store
-Thumbs.db
-
-# Logs
-*.log
-
-# Testing
-.pytest_cache/
-.coverage
-htmlcov/
-
-# Build
-build/
-dist/
-*.egg-info/
-
-# Mypy
-.mypy_cache/
-
-# Ruff
-.ruff_cache/
-
-# Alembic
-alembic/versions/*.pyc
-
-# SQLite
 *.db
+*.sqlite
 *.sqlite3
+__pycache__/
+*.pyc
+.pytest_cache/
+.idea/
+session_logs/
+data/
+alembic_preview.sql
+staged_files.txt
+requirements-lock.txt
+*_backup.py
+*_before_*.py
+*before*.py

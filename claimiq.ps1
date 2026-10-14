@@ -1,0 +1,1 @@
+python -m scripts.claimiq_cli @args

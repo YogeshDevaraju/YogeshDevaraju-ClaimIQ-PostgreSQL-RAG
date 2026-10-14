@@ -1,0 +1,18 @@
+MERIDIAN GENERAL INSURANCE
+RULE-BASED FRAUD INDICATOR GUIDELINE
+Document Code: MGI-FRAUD-001
+
+Section 1 - Purpose
+Fraud indicators trigger additional review; they do not prove fraud and must not automatically reject a claim.
+
+Section 2 - Indicators
+Indicators include claim submission shortly after policy activation, repeated similar claims, inconsistent incident descriptions, altered documents, unusual repair estimates, missing ownership evidence, and multiple claims linked to the same contact details.
+
+Section 3 - Review
+When indicators are present, the adjuster should record the factual indicator, request supporting evidence, and refer high-risk cases to the Claims Manager.
+
+Section 4 - Privacy
+Only information necessary for claim review may be recorded. Protected personal attributes must not be used for fraud scoring.
+
+Section 5 - Decision
+A claim decision must be based on policy coverage and verified evidence. An indicator alone is not a valid rejection reason.
